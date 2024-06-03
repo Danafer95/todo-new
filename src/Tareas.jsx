@@ -6,6 +6,12 @@ function Tareas(){
 
     let [tareas,setTareas] = useState([])
 
+    useEffect(() => {
+        fetch("http://localhost:4000/tareas")
+        .then(respuesta => respuesta.json())
+        .then(tareas => setTareas(tareas))
+    }, [])
+
     function crearTarea(tarea){
         setTareas([...tareas,tarea])
     }
